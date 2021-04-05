@@ -1,0 +1,650 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Groceries - Static Site</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/foundation.css" type="text/css" >    
+    <link rel="stylesheet" href="assets/css/slick.css" type="text/css"  />
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+    <div id="login-modal" class="reveal" data-reveal>
+        <h2 class="main-title text-center" id="modalTitle">Login</h2>
+        <div class="form-field">
+            <p><label for="login-email">Email<span class="required">*</span></label></p>
+            <input class="input-field" type="text" value="tom.john@gmail.com" placeholder="Email" id="login-email" value="">
+        </div>
+        <div class="form-field">
+            <p><label for="login-password">Password<span class="required">*</span></label></p>
+            <input class="input-field" type="password" value="dingo" placeholder="Email" id="login-password" value="">
+        </div>
+        <button id="login-submit-modal" type="button" class="btn-primary bg-green">Login</button>
+        <button id="login-cancel-modal" type="button" class="btn-primary" data-close aria-label="Close modal">Cancel</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div id="create-account-modal" class="reveal" data-reveal>
+        <h2 class="main-title text-center" id="modalTitle">Create Account</h2>
+        <div class="form-field">
+            <p><label for="create-account-fname">First Name<span class="required">*</span></label></p>
+            <input class="input-field" type="text" placeholder="" id="create-account-fname" value="">
+        </div>
+        <div class="form-field">
+            <p><label for="create-account-lname">Last Name<span class="required">*</span></label></p>
+            <input class="input-field" type="text" placeholder="" id="create-account-lname" value="">
+        </div>
+        <div class="form-field">
+            <p><label for="create-account-email">Email<span class="required">*</span></label></p>
+            <input class="input-field" type="text" placeholder="" id="create-account-email" value="">
+        </div>
+        <div class="form-field">
+            <p><label for="create-account-password">Password<span class="required">*</span></label></p>
+            <input class="input-field" type="password" placeholder="" id="create-account-password" value="">
+        </div>
+        <div class="form-field">
+            <p><label for="create-account-address">Address<span class="required">*</span></label></p>
+            <input class="input-field" type="text" placeholder="" id="create-account-address" value="">
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="form-field cell large-4">
+                <p><label for="create-account-city">City<span class="required">*</span></label></p>
+                <input class="input-field" type="text" placeholder="" id="create-account-city" value="">
+            </div>
+            <div class="form-field cell large-4">
+                <p><label for="create-account-province">Province<span class="required">*</span></label></p>
+                <select class="input-field" name="create-account-province" id="create-account-province">
+                    <option selected="" disabled=""></option>
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NT">NT</option>
+                    <option value="NS">NS</option>
+                    <option value="NU">NU</option>
+                    <option value="ON">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                </select>
+            </div>
+            <div class="form-field cell large-4">
+                <p><label for="create-account-postal">Postal Code<span class="required">*</span></label></p>
+                <input class="input-field" type="text" placeholder="" id="create-account-postal-code" value="">
+            </div>
+        </div>
+        <button id="create-account-submit-modal" type="button" class="btn-primary bg-green">Create Account</button>
+        <button id="create-account-cancel-modal" type="button" class="btn-primary" data-close aria-label="Close modal">Cancel</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <header>
+        <div class="top-header">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell large-12 small-12 text-center align-center">
+                        <a class="arrow" href="#/products/1"> <span>10%</span> Discount! - On selected Items </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x align-center">
+                    <div class="logo"><a href="#/splash/"><img src="assets/images/logo.png" alt="Easy Groceries"></a>    </div>
+                    <div class="search-container">
+                        <div class="department-search">
+                            <form action="#">
+                                <div class="departments">
+                                    <div name="departmentsList" class="department-options" id="departments-list">
+                                        <span>All Departments</span>
+                                        <div class="department-inner-arrow"></div>
+                                        <div class="department-inner">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-area search">
+                                    <input type="text" class="search-input" name="search" id="search" placeholder="Search Product..." value="">
+                                    <button class="search-btn" type="submit"><img src="assets/images/search.png" /></button>
+                                    <div class="search_results"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="account-links">
+                        <div class="cart-info">
+                            <a href="#/cart/">
+                                <img src="assets/images/cart.png" alt="cart">
+                                <span class="cart-items">0</span>
+                            </a>
+                        </div>
+                        <div class="login-link" data-open="login-modal">
+                            <a href="#"><img src="assets/images/user.png" alt="cart"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="app">
+        <article class="splash hideAll">
+            <section class="main-banner hero-text">
+                <div class="hero" data-arrows="true" data-autoplay="true">
+                    <!--.hero-slide-->
+                    
+                    <div class="hero-slide">
+                        <img alt="Fresh Vegetables" class="img-responsive cover" src="assets/images/banner-1.jpg">
+                        <div class="header-content  slide-content">
+                            <h1 class="mb-4">Fresh Vegetables</h1>  
+                            <p>Farm Fresh Produce | Eat  Your Veggies</p>
+                        </div>
+                    </div>
+                    <!--.hero-slide-->
+                    
+                    <div class="hero-slide">
+                        <img alt="Healthy Breakfast" class="img-responsive cover" src="assets/images/banner-2.jpg">
+                        <div class="header-content  slide-content">
+                            <h1 class="mb-4">Healthy Breakfast</h1>  
+                            <p>Cereal is always a good idea</p>  
+                        </div>
+                    </div>
+                    <!--.hero-slide-->
+                    
+                    <div class="hero-slide">
+                        <img alt="Fresh from our oven" class="img-responsive cover" src="assets/images/banner-3.jpg">
+                        <div class="header-content  slide-content">
+                            <h1 class="mb-4">Fresh from our oven</h1>  
+                            <p>Everything we bake, we bake with Love.</p>
+                        </div>
+                    </div>
+                </div><!--.hero-->
+            </section>
+            <section class="categories">
+                <div class="grid-container">
+                    <div class="grid-x text-center align-middle">
+                        <div class="cell large-12"><h2 class="main-title">TOP CATEGORIES</h2></div>
+                    </div>
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell large-2 small-6  text-center">
+                            <a class="department-item" data-id="2">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-1.png" alt="">
+                                </div>
+                                <div class="cat-name">Bakery</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="1">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-2.png" alt="">
+                                </div>
+                                <div class="cat-name">Baby Food & Supplies</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="3">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-3.png" alt="">
+                                </div>
+                                <div class="cat-name">Baking Supplies</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="5">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-4.png" alt="">
+                                </div>
+                                <div class="cat-name">Canned Good</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="20">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-5.png" alt="">
+                                </div>
+                                <div class="cat-name">Milk & Dairy</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="18">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-6.png" alt="">
+                                </div>
+                                <div class="cat-name">Health & Beauty</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="product-grid">
+                <div class="grid-container">
+                    <div class="grid-x text-center align-middle">
+                        <div class="cell large-12"><h2 class="main-title">FAVOURITE ITEMS</h2></div>
+                    </div>
+                    <div class="grid-x grid-margin-x favourite-products">
+                        
+                    </div>
+                </div>
+            </section>
+            <section class="special-offer">
+                <div class="grid-container">
+                    <div class="grid-x text-center align-middle">
+                        <div class="cell large-12"><h2 class="main-title">Special Offers</h2></div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="cell large-4 small-12">
+                            <div class="no-border">
+                                <div class="text-center department-item" data-id="15">
+                                    <img src="assets/images/offer-1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell large-4 small-12">
+                            <div class="no-border">
+                                <div class="text-center department-item" data-id="13">
+                                    <img src="assets/images/offer-2.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell large-4 small-12">
+                            <div class="no-border">
+                                <div class="text-center department-item" data-id="26">
+                                    <img src="assets/images/offer-3.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x products hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 page-title"><h1 class="dept_name">Produce</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > <span class="dept_name">Produce</span></div>
+                    </div>
+                </div>
+            </section>
+            <section class="products-container">
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x show-products">
+                        
+                    </div>
+                </div>
+            </section>
+            <section class="categories">
+                <div class="grid-container">
+                    <div class="grid-x text-center align-middle">
+                        <div class="cell large-12"><h2 class="main-title">TOP CATEGORIES</h2></div>
+                    </div>
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell large-2 small-6  text-center">
+                            <a class="department-item" data-id="2">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-1.png" alt="">
+                                </div>
+                                <div class="cat-name">Bakery</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="1">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-2.png" alt="">
+                                </div>
+                                <div class="cat-name">Baby Food & Supplies</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="3">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-3.png" alt="">
+                                </div>
+                                <div class="cat-name">Baking Supplies</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="5">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-4.png" alt="">
+                                </div>
+                                <div class="cat-name">Canned Good</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="20">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-5.png" alt="">
+                                </div>
+                                <div class="cat-name">Milk & Dairy</div>
+                            </a>
+                        </div>
+                        <div class="cell large-2 small-6 text-center">
+                            <a class="department-item" data-id="18">
+                                <div class="no-border cat-img">
+                                    <img src="assets/images/cat-6.png" alt="">
+                                </div>
+                                <div class="cat-name">Health & Beauty</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x cart hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 title"><h1>Cart</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > Cart</div>
+                    </div>
+                </div>
+            </section>
+            <section class="cart-block">
+                <div class="grid-container">
+                    <div class="grid-x">
+                        <div class="cell large-12">
+                            <table class="responsive-card-table cart-container">
+                                
+                            </table>
+                        </div>
+                        <div class="cell large-4 small-12 large-offset-8 text-right">
+                            <table class="responsive-card-table checkout-cart">
+                                
+                            </table>
+                            <button id="checkout" type="button" class="checkout-btn full-width-btn btn-primary bg-green">Checkout</button>
+                            <button id="continue-shopping" type="button" class="shopping-btn full-width-btn btn-primary ">Continue Shopping</button>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x checkout hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 title"><h1>Checkout</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > Checkout</div>
+                    </div>
+                </div>
+            </section>
+            <section class="checkout-container">
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell large-12 customer-auth  text-center">
+                            <p>Connect with us for fast and easy check out. Register and save time!</p>
+                            <button id="login" type="button" data-open="login-modal" class="btn-primary bg-green">Login</button>
+                            <button id="create-account" data-open="create-account-modal" type="button" class="btn-primary ">Create Account</button>
+                        </div>
+                        <div class="cell large-6 small-12 billing-detail">
+                            <h3>Billing Address</h3>
+                            <div class="form-field">
+                                <p><label for="billing-name-first">First Name<span class="required">*</span></label></p>
+                                <input class="input-field"  type="text" placeholder="" id="billing-name-first" value="">
+                            </div>
+                            <div class="form-field">
+                                <p><label for="billing-name-last">Last Name<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="billing-name-last" value="">
+                            </div>
+                            <div class="form-field">
+                                <p><label for="billing-address">Address<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="billing-address" value="">
+                            </div>
+                            <div class="grid-x grid-margin-x">
+                                <div class="form-field cell large-4">
+                                    <p><label for="billing-city">City<span class="required">*</span></label></p>
+                                    <input class="input-field" type="text" placeholder="" id="billing-city" value="">
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="billing-province">Province<span class="required">*</span></label></p>
+                                    <select class="input-field" name="billing-province" id="billing-province">
+                                        <option selected="" disabled=""></option>
+                                        <option value="AB">AB</option>
+                                        <option value="BC">BC</option>
+                                        <option value="MB">MB</option>
+                                        <option value="NB">NB</option>
+                                        <option value="NL">NL</option>
+                                        <option value="NT">NT</option>
+                                        <option value="NS">NS</option>
+                                        <option value="NU">NU</option>
+                                        <option value="ON">ON</option>
+                                        <option value="PE">PE</option>
+                                        <option value="QC">QC</option>
+                                        <option value="SK">SK</option>
+                                        <option value="YT">YT</option>
+                                    </select>
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="billing-postal">Postal Code<span class="required">*</span></label></p>
+                                    <input class="input-field" type="text" placeholder="" id="billing-postal-code" value="">
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <p><label for="billing-phone">Phone Number<span class="required">*</span></label></p>
+                                <input class="input-field"  type="text" placeholder="" id="billing-phone" value="">
+                            </div>
+                            <div class="ship-fild form-field">
+                                <input id="ship-box" type="checkbox">
+                                <label>Ship to a different address?</label>
+                                <input id="save-address" type="checkbox">
+                                <label>Save this detail for future order?</label>
+                            </div>
+                        </div>
+                        <div class="cell large-6 small-12 shipping-detail">
+                            <h3>Shipping Address</h3>
+                            <div class="form-field">
+                                <p><label for="shipping-name-first">First Name<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="shipping-name-first" value="">
+                            </div>
+                            <div class="form-field">
+                                <p><label for="shipping-name-last">Last Name<span class="required">*</span></label></p>
+                                <input class="input-field"  type="text" placeholder="" id="shipping-name-last" value="">
+                            </div>
+                            <div class="form-field">
+                                <p><label for="shipping-address">Address<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="shipping-address" value="">
+                            </div>
+                            <div class="grid-x grid-margin-x">
+                                <div class="form-field cell large-4">
+                                    <p><label for="shipping-city">City<span class="required">*</span></label></p>
+                                    <input class="input-field" type="text" placeholder="" id="shipping-city" value="">
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="shipping-province">Province<span class="required">*</span></label></p>
+                                    <select class="input-field" name="shipping-province" id="shipping-province">
+                                        <option selected="" disabled=""></option>
+                                        <option value="AB">AB</option>
+                                        <option value="BC">BC</option>
+                                        <option value="MB">MB</option>
+                                        <option value="NB">NB</option>
+                                        <option value="NL">NL</option>
+                                        <option value="NT">NT</option>
+                                        <option value="NS">NS</option>
+                                        <option value="NU">NU</option>
+                                        <option value="ON">ON</option>
+                                        <option value="PE">PE</option>
+                                        <option value="QC">QC</option>
+                                        <option value="SK">SK</option>
+                                        <option value="YT">YT</option>
+                                    </select>
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="shipping-postal">Postal Code<span class="required">*</span></label></p>
+                                    <input class="input-field" type="text" placeholder="" id="shipping-postal-code" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell large-4 small-12 large-offset-8 text-right">
+                            <button id="continue-payment-btn" type="button" class="btn-primary bg-green">Continue Payment</button>
+                            <button id="back-to-cart" type="button" class="shopping-btn btn-primary ">Back to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x payment hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 title"><h1>Payment</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > Payment</div>
+                    </div>
+                </div>
+            </section>
+            <section class="payment-container">
+                <div class="grid-container">
+                    <div class="grid-x  grid-padding-x">
+                        <div class="cell large-offset-3 large-6 small-12">
+                            <h3>Payment Details</h3>
+                            <div class="form-field">
+                                <p><label for="card-holder-name">Card Holder Name<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="card-holder-name" value="">
+                            </div>
+                            <div class="form-field">
+                                <p><label for="card-number">Card Number<span class="required">*</span></label></p>
+                                <input class="input-field" type="text" placeholder="" id="card-number" value="">
+                            </div>
+                            <div class="grid-x grid-margin-x">
+                                <div class="form-field cell large-4">
+                                    <p><label for="card-expire-month">Month<span class="required">*</span></label></p>
+                                    <select class="input-field" name="" id="card-expire-month">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="card-expire-year">Year<span class="required">*</span></label></p>
+                                    <select class="input-field" name="" id="card-expire-year">
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                    </select>
+                                </div>
+                                <div class="form-field cell large-4">
+                                    <p><label for="card-cvv">CVV<span class="required">*</span></label></p>
+                                    <input class="input-field" type="password" placeholder="" id="card-cvv" value="">
+                                </div>
+                            </div>
+                            <div class="text-center mt-30">
+                                <button id="continue-confirm-btn" type="button" class="btn-primary bg-green">Confirm Payment</button>
+                                <button id="back-to-cart" type="button" class="cart-btn btn-primary ">Back to Cart</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x confirmation hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 title"><h1>Payment Confirmation</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > Payment Confirmation</div>
+                    </div>
+                </div>
+            </section>
+            <section class="confirm-block">
+                <div class="grid-container">
+                    <div class="grid-x">
+                        <div class="cell large-12">
+                            <table class="responsive-card-table confirm-container">
+                                
+                            </table>
+                        </div>
+                        <div class="cell large-4 small-12 large-offset-8 text-right">
+                            <table class="responsive-card-table confirm-cart">
+                                
+                            </table>
+                            <button id="complete-btn" type="button" class="complete-btn btn-primary bg-green">Complete Payment</button>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="grid-x grid-padding-x complete hideAll">
+            <section class="inner-banner">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 title"><h1>Order Placed</h1></div>
+                        <div class="cell large-12"><a href="#/splash/">Home</a> > Complete</div>
+                    </div>
+                </div>
+            </section>
+            <section class="height-25">
+                <div class="grid-container">
+                    <div class="grid-x text-center">
+                        <div class="cell large-12 complete-container">
+                            <h1>Thank you, <span class="full-name">Vyoma Shah</span> for your order. You will recieve it within 2 days. </h1>
+                            <h2>Your order number is #<span class="order-number">123455</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <section class="newsletter align-middle">
+            <div class="grid-container">
+                <div class="grid-x text-center">
+                    <div class="cell large-12 small-12 title"><h3>Subscribe to newsletter</h3></div>
+                    <div class="cell large-12 small-12 desc">Get updated on new offers and promotions.</div>
+                    <div class="cell large-offset-4 large-4 small-12">
+                        <form id="newsletter">
+                            <input type="text" name="email" id="newsletter-email" title="Sign up for our newsletter" class="input-field" placeholder="Enter your email address">                              
+                            <button type="submit" title="Subscribe" class="btn-primary btn-subscribe"><span>Subscribe</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="copyright-section">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="large-6 small-12">© Copyright 2020 <a href="#/">Easy Groceries</a>. All rights reserved.</div>
+                    <div class="large-6 small-12 text-right footer-link">
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </footer>
+
+
+    <script src="assets/js/vendor.js"></script> 
+    <script src="assets/js/foundation.js"></script>
+    <script src="assets/js/modernizr.js"></script>
+    <script src="assets/js/sammy.min.js" type="text/javascript"></script>
+    <script src="assets/js/sammy.template.js" type="text/javascript"></script> 
+    <script src="assets/js/slick.min.js" type="text/javascript" ></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
